@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Настрой пайплайн</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css">
+</head>
+<body>
+<div id="viewport"><div id="deck">
+
+<section class="slide title-slide nofoot">
+  <div class="mosaic bg" aria-hidden="true"><div class="colm"><img src="assets/games/argo-2.jpg" alt=""><img src="assets/games/jev-rts-1.jpg" alt=""><img src="assets/games/argo-location-r8.jpg" alt=""><img src="assets/games/jev-rts-2.jpg" alt=""><img src="assets/games/argo-1.jpg" alt=""><img src="assets/games/jev-rts-3.jpg" alt=""><img src="assets/games/argo-2.jpg" alt=""><img src="assets/games/jev-rts-1.jpg" alt=""><img src="assets/games/argo-location-r8.jpg" alt=""><img src="assets/games/jev-rts-2.jpg" alt=""><img src="assets/games/argo-1.jpg" alt=""><img src="assets/games/jev-rts-3.jpg" alt=""></div><div class="colm"><img src="media/game-marchlands.jpg" alt=""><img src="media/game-creepyfarm.jpg" alt=""><img src="assets/games/marchlands-2.jpg" alt=""><img src="assets/games/creepyfarm-2.jpg" alt=""><img src="assets/creepyfarm/cf-after.jpg" alt=""><img src="assets/games/dinoland-3.jpg" alt=""><img src="media/game-marchlands.jpg" alt=""><img src="media/game-creepyfarm.jpg" alt=""><img src="assets/games/marchlands-2.jpg" alt=""><img src="assets/games/creepyfarm-2.jpg" alt=""><img src="assets/creepyfarm/cf-after.jpg" alt=""><img src="assets/games/dinoland-3.jpg" alt=""></div><div class="colm"><img src="media/game-wildwaste.jpg" alt=""><img src="media/game-dinoland.jpg" alt=""><img src="assets/games/wild-waste-2.jpg" alt=""><img src="assets/games/dinoland-2.jpg" alt=""><img src="assets/games/wild-waste-3.jpg" alt=""><img src="assets/games/argo-cathedral-last.jpg" alt=""><img src="media/game-wildwaste.jpg" alt=""><img src="media/game-dinoland.jpg" alt=""><img src="assets/games/wild-waste-2.jpg" alt=""><img src="assets/games/dinoland-2.jpg" alt=""><img src="assets/games/wild-waste-3.jpg" alt=""><img src="assets/games/argo-cathedral-last.jpg" alt=""></div></div>
+  <div class="shade bg"></div>
+  <div class="kicker">studioigor · геймдев с нейросетями</div>
+  <h1>Не делай игру.<br><em>Настрой пайплайн.</em></h1>
+  <p class="sub" style="max-width:860px">Как держать нейросеть под контролем на каждом этапе — от концепта до релиза — и строить инструменты, чтобы вы с ней видели одну и ту же игру</p>
+  <div class="author"><img src="assets/avatar-new.jpg" alt=""><div><b>Игорь</b><span>youtube.com/@studioigor</span></div></div>
+  <div class="stages"><span><b>01</b>идея</span><span><b>02</b>стиль</span><span><b>03</b>движок</span><span><b>04</b>окружение</span><span><b>05</b>ассеты</span><span><b>06</b>механики</span><span><b>07</b>срез</span><span><b>08</b>контент</span><span><b>09</b>полировка</span><span><b>10</b>релиз</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">кто я</div>
+  <h2>Игорь, <em>studioigor</em></h2>
+  <div class="g-7-5 grow">
+    <div class="col">
+      <ul class="list">
+        <li>15 лет в разработке: пишу код и управляю командами</li>
+        <li>Всегда занимался технической стороной геймдева: движки, инструменты, пайплайны</li>
+        <li>Изучаю, при помощи чего делают игры</li>
+        <li>Первый ролик на YouTube — 1 января 2026</li>
+        <li>Сейчас — геймдев с нейросетями: проверяю модели на реальных задачах</li>
+      </ul>
+      <div class="row mt-auto">
+        <div class="card tight" style="flex:1"><div class="num">7 500+</div>промптов в Claude Code за год</div>
+        <div class="card tight" style="flex:1"><div class="num">100+</div>проектов-экспериментов</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="lbl">форматы канала</div>
+      <div class="chips"><span class="chip">сравнение нейросетей</span><span class="chip">нейронки делают игру вместе</span><span class="chip">тест новой модели</span><span class="chip">игровой опыт с нуля</span></div>
+      <div class="thumbs mt-s" style="grid-template-columns:1fr 1fr">
+        <img src="assets/thumb-astra.jpg" alt=""><img src="assets/thumb-local-llm.jpg" alt="">
+        <img src="assets/thumb-jev-units.jpg" alt=""><img src="assets/thumb-prometheus-opus.jpg" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="kicker">мои последние игры</div>
+  <h2>Шесть игр — <em>на них обкатан пайплайн</em></h2>
+  <div class="games six grow">
+    <figure style="--i:0"><video src="media/04-gunfeel.mp4" poster="assets/games/argo-2.jpg" muted loop playsinline preload="auto"></video><figcaption>Арго<small>Unity · sci-fi хоррор</small><i>интро на манекенах, Tripo → Blender, ~20 критиков</i></figcaption></figure>
+    <figure style="--i:1"><video src="media/game-dinoland.mp4" poster="media/game-dinoland.jpg" muted loop playsinline preload="auto"></video><figcaption>Dinoland<small>Unity · экспедиция с динозаврами</small><i>джип собран скриптами Blender</i></figcaption></figure>
+    <figure style="--i:2"><img src="assets/games/jev-rts-1.jpg" alt=""><figcaption>Стратегия на JEV<small>Unity · RTS</small><i>юнитами правит нейросеть, стенд на 100 симуляций</i></figcaption></figure>
+    <figure style="--i:3"><video src="media/game-wildwaste.mp4" poster="media/game-wildwaste.jpg" muted loop playsinline preload="auto"></video><figcaption>Wild Waste<small>Godot · вестерн, орды</small><i>арт по референсу, риги и эффекты кодом</i></figcaption></figure>
+    <figure style="--i:4"><video src="media/game-creepyfarm.mp4" poster="media/game-creepyfarm.jpg" muted loop playsinline preload="auto"></video><figcaption>Creepy Farm<small>ref2game · пиксельная ферма</small><i>картинку рисует нейронка, жизнь — код</i></figcaption></figure>
+    <figure style="--i:5"><video src="media/game-marchlands.mp4" poster="media/game-marchlands.jpg" muted loop playsinline preload="auto"></video><figcaption>Marchlands<small>PixiJS · пошаговая, как HOMM</small><i>студия агентов Orca, 12 дней</i></figcaption></figure>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="kicker">план на 40 минут</div>
+  <h2>От «сделай игру» — к пайплайну, <em>который делает игры</em></h2>
+  <div class="g5 plan mt">
+    <div class="card"><div class="num">01</div><h4>«Сделай игру»</h4>когда работает, а когда нет</div>
+    <div class="card"><div class="num">02</div><h4>Пайплайн</h4>этапы, критерии, инструменты</div>
+    <div class="card you"><div class="num">03</div><h4>10 этапов</h4>что решаешь ты, что делает агент, как вы оба проверяете работу</div>
+    <div class="card"><div class="num">04</div><h4>Ловушка</h4>когда инструменты съедают игру</div>
+    <div class="card"><div class="num">05</div><h4>Нюансы</h4>модели, effort, промпты, скиллы</div>
+  </div>
+  <figure class="shot grow mt"><img src="assets/illus/il-plan.jpg" alt="" style="object-position:50% 50%"></figure>
+</section>
+
+<section class="slide divider nofoot">
+  <img class="full bg" src="assets/illus/il-part1.jpg" alt="">
+  <div class="shade bg"></div>
+  <div class="kicker">часть 1 из 5</div>
+  <h2 class="xl">«Сделай игру»</h2>
+  <p class="lead">когда работает, а когда нет</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">часть 1 · «сделай игру»</div>
+  <h2>Иногда «сделай игру» — <em>достаточно</em></h2>
+  <div class="g-7-5 grow">
+    <div class="col" style="gap:18px">
+      <div><div class="lbl">голая строка</div><div class="prompt">сделай игру стратегию в реальном времени в стиле warcraft на phaser</div></div>
+      <div><div class="lbl">строка + план</div><div class="prompt">сделай игру в godot @plan.md</div></div>
+      <div><div class="lbl">строка + скилл</div><div class="prompt">/studioigor хочу ферму: Stardew Valley × Stranger Things</div></div>
+      <div><div class="lbl">строка + цикл</div><div class="prompt">/loop 30m /gamemaker делаем игру-демо: летать на корабле по космосу и садиться на планеты <span class="c">…</span></div></div>
+    </div>
+    <div class="col">
+      <div class="lbl">тесты моделей на канале: одна задача — одна игра</div>
+      <div class="thumbs" style="grid-template-columns:1fr 1fr">
+        <img src="assets/thumb-prometheus-opus.jpg" alt=""><img src="assets/thumb-local-llm.jpg" alt="">
+        <img src="assets/thumb-astra.jpg" alt=""><img src="assets/thumb-jev-units.jpg" alt="">
+      </div>
+      <p class="small ink2 mt-s">Современная модель соберёт играбельный прототип по одной строке.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="kicker">часть 1 · кто принимает решения</div>
+  <h2>Что не решил ты — <em>додумает нейронка</em></h2>
+  <div class="slots">
+    <div></div>
+    <div class="heads"><span>жанр</span><span>референсы</span><span>фантазия</span><span>цикл 30 с</span><span>цикл 5–15 мин</span><span>цикл сессии</span><span>камера</span><span>управление</span><span>режимы</span><span>сюжет</span><span>сеттинг, тон</span><span>прогрессия</span><span>поражение</span><span>длина сессии</span><span>масштаб</span><span>платформы</span></div>
+    <div></div>
+
+    <div class="req">«сделай ферму»</div>
+    <div class="cells"><i class="y"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i><i style="--k:9"></i><i style="--k:10"></i><i style="--k:11"></i><i style="--k:12"></i><i style="--k:13"></i><i style="--k:14"></i><i style="--k:15"></i></div>
+    <div class="cnt">1<small>из 16 решил ты</small></div>
+
+    <div class="req">«ферма: Stardew Valley × Stranger Things»</div>
+    <div class="cells"><i class="y"></i><i class="y"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i><i style="--k:9"></i><i class="y"></i><i style="--k:10"></i><i style="--k:11"></i><i style="--k:12"></i><i style="--k:13"></i><i style="--k:14"></i></div>
+    <div class="cnt">3<small>из 16</small></div>
+
+    <div class="req">CONCEPT.md после интервью<small>2–3 раунда вопросов с вариантами</small></div>
+    <div class="cells"><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="v"></i><i class="y"></i><i class="v"></i><i class="v"></i><i class="y"></i></div>
+    <div class="cnt">16<small>13 твоих + 3 на виду</small></div>
+  </div>
+  <div class="legend mt"><span><i class="y"></i>решил ты</span><span><i class="a"></i>додумала нейронка — молча</span><span><i class="v"></i>допущение агента — на виду, можно поменять</span></div>
+  <div class="takeaway">Подробность концепта = насколько сильно нейронка будет додумывать игру</div>
+</section>
+
+<section class="slide">
+  <div class="kicker">часть 1 · цена додумывания</div>
+  <h2>Решения, которые приняла за тебя нейронка, — <em>потенциальный источник проблем</em></h2>
+  <div class="g-6-6 grow">
+    <div class="col" style="gap:26px">
+      <div class="q">персонаж двигается задом наперёд<small>Block Stars · март</small></div>
+      <div class="q">пули боком повернуты<small>Rangers in Space · май</small></div>
+      <div class="q">картинки концепта получились нейрослопные<small>Арго · концепты · октябрь</small></div>
+      <div class="q">агент <em>не видит</em> проблему<small>Гробница Ра · май</small></div>
+    </div>
+    <div class="col">
+      <div class="card bad"><div class="lbl red">проблема 1</div><h4>Игра, которую никто не просил</h4>Пустоты заполнены AI-слопом</div>
+      <div class="card bad"><div class="lbl red">проблема 2</div><h4>Ошибки, которые никто не видит</h4>Модель пишет код вслепую: не видит, не слышит и не играет</div>
+    </div>
+  </div>
+  <div class="takeaway">Решения и настройка окружения — до работы. Инструменты — во время работы</div>
+</section>
+
+<section class="slide divider nofoot">
+  <img class="full bg" src="assets/illus/il-part2.jpg" alt="">
+  <div class="shade bg"></div>
+  <div class="kicker">часть 2 из 5</div>
+  <h2 class="xl">Пайплайн</h2>
+  <p class="lead">этапы, критерии, инструменты</p>
+</section>
+
+<section class="slide center">
+  <div class="kicker">главная мысль</div>
+  <h2 class="xl">Цель — не игра.<br><em>Цель — пайплайн,</em> который делает игры</h2>
+  <div class="g3">
+    <div class="card"><div class="lbl amber">этапы</div><h4>Порядок</h4>Нельзя полировать то, чего ещё нет. Сначала решения — потом производство</div>
+    <div class="card you"><div class="lbl amber">критерии</div><h4>Твоё «да»</h4>Каждый этап кончается приёмкой: критерий выполнен, ты видишь результат и решаешь</div>
+    <div class="card ai"><div class="lbl sage">инструменты</div><h4>Глаза</h4>Чтобы ты и агент видели одну и ту же игру — кадрами и числами</div>
+  </div>
+  <div class="q mt-l" style="font-size:32px">Все решения принимаешь ты. Остальное делает студия.<small>принцип скилла studioigor</small></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">не только мой опыт · лучшие практики 2025–2026</div>
+  <h2 style="font-size:62px">Индустрия пришла <em>к тем же решениям</em></h2>
+  <div class="g3 src-grid mt-s">
+    <div class="card"><div class="lbl amber">проверка</div><p>«Дайте Claude проверку, которую он может запустить: тесты, сборку, скриншот. Это разница между сессией, за которой нужно следить, и сессией, за которой не нужно»</p><div class="src">Anthropic · Claude Code best practices</div></div>
+    <div class="card"><div class="lbl amber">$9 против $200</div><p>Один агент: 20 минут, $9 — «ничего не реагировало на ввод». Планировщик + генератор + оценщик: 6 часов, $200 — в игру можно играть</p><div class="src">Anthropic Engineering · март 2026</div></div>
+    <div class="card"><div class="lbl amber">план — источник истины</div><p>С одним PLANS.md Codex работал 7+ часов. Агент сам ведёт в нём прогресс и журнал решений: «перезапуститься можно с одним только планом»</p><div class="src">OpenAI Cookbook · Using PLANS.md, 2025</div></div>
+    <div class="card"><div class="lbl amber">код — малая часть</div><p>«Код — 10–20% ценности. Остальные 80–90% — структурированная коммуникация»</p><div class="src">Sean Grove, OpenAI · «The New Code», 2025</div></div>
+    <div class="card"><div class="lbl amber">коротко, а не много</div><p>Длинные файлы контекста снижают успех агента и добавляют 20%+ к цене. Совет — «только минимальные требования»</p><div class="src">ETH Zurich · arXiv 2602.11988 · 2026</div></div>
+    <div class="card"><div class="lbl amber">блокаут</div><p>«Дизайн-документ нельзя плейтестить. Блокаут — можно»</p><div class="src">The Level Design Book</div></div>
+  </div>
+  <div class="takeaway">Этапы, короткие спеки, проверки и «глаза» — это уже консенсус, а не вкусовщина</div>
+</section>
+
+<section class="slide">
+  <div class="kicker">карта пайплайна · скилл studioigor</div>
+  <h2>10 этапов — <em>10 критериев</em></h2>
+  <div class="map">
+    <div class="ph" style="--i:0"><span class="n">01</span><h4>Идея</h4><div class="you"><span class="tag">ты</span>отвечаешь на 2–3 раунда вопросов, утверждаешь концепцию</div><div class="ai"><span class="tag">агент</span>питч, принципы, сюжет, список механик</div></div>
+    <div class="ph" style="--i:1"><span class="n">02</span><h4>Стиль</h4><div class="you"><span class="tag">ты</span>отмечаешь картинки на доске, принимаешь стиль</div><div class="ai"><span class="tag">агент</span>направления, референсы, арт-библия</div></div>
+    <div class="ph" style="--i:2"><span class="n">03</span><h4>Движок</h4><div class="you"><span class="tag">ты</span>выбираешь платформу и движок</div><div class="ai"><span class="tag">агент</span>сравнивает движки под эту игру</div></div>
+    <div class="ph" style="--i:3"><span class="n">04</span><h4>Окружение</h4><div class="you"><span class="tag">ты</span>видишь окно игры своими глазами</div><div class="ai"><span class="tag">агент</span>CLI, MCP, Blender, автопроверки, захват кадров</div></div>
+    <div class="ph" style="--i:4"><span class="n">05</span><h4>Ассеты</h4><div class="you"><span class="tag">ты</span>утверждаешь эталонную сцену: «так будет выглядеть игра»</div><div class="ai"><span class="tag">агент</span>модели, анимации, звук</div></div>
+    <div class="ph" style="--i:5"><span class="n">06</span><h4>Механики</h4><div class="you"><span class="tag">ты</span>играешь в каждую тестовую сцену</div><div class="ai"><span class="tag">агент</span>спека в числах, тестовая сцена, тюнинг</div></div>
+    <div class="ph" style="--i:6"><span class="n">07</span><h4>Срез</h4><div class="you"><span class="tag">ты</span>проходишь первый настоящий кусок</div><div class="ai"><span class="tag">агент</span>меню → игра → результат</div></div>
+    <div class="ph" style="--i:7"><span class="n">08</span><h4>Контент</h4><div class="you"><span class="tag">ты</span>играешь каждую новую итерацию</div><div class="ai"><span class="tag">агент</span>уровни как данные, сюжет, катсцены</div></div>
+    <div class="ph" style="--i:8"><span class="n">09</span><h4>Полировка</h4><div class="you"><span class="tag">ты</span>говоришь «достаточно»</div><div class="ai"><span class="tag">агент</span>отклик, звук, первые 60 секунд</div></div>
+    <div class="ph" style="--i:9"><span class="n">10</span><h4>Релиз</h4><div class="you"><span class="tag">ты</span>решаешь, публиковать ли и где</div><div class="ai"><span class="tag">агент</span>требования площадки, билды, стор</div></div>
+  </div>
+  <div class="takeaway ghost">Ты не пишешь код — ты принимаешь решения на всех этапах</div>
+</section>
+
+<section class="slide">
+  <div class="kicker">как устроен любой этап</div>
+  <h2>Каждый этап — <em>один и тот же цикл</em></h2>
+  <div class="flow pulse">
+    <div class="st ai" style="--i:0"><div class="n">01</div><h4>Ресерч</h4>ищем лучшие практики в интернете, а не в памяти модели</div><div class="ar">→</div>
+    <div class="st ai" style="--i:1"><div class="n">02</div><h4>Документ</h4>одна строка — одно решение</div><div class="ar">→</div>
+    <div class="st ai" style="--i:2"><div class="n">03</div><h4>Сделал</h4>код, ассет, сцена</div><div class="ar">→</div>
+    <div class="st ai" style="--i:3"><div class="n">04</div><h4>Измерил</h4>кадры, числа, логи: чем больше данных, тем лучше</div><div class="ar">→</div>
+    <div class="st you" style="--i:4"><div class="n">05</div><h4>Приёмка</h4>проверка или твоё «да»</div><div class="ar">→</div>
+    <div class="st ai" style="--i:5"><div class="n">06</div><h4>Коммит</h4>git после каждого решения</div>
+  </div>
+  <div class="g3 mt-l">
+    <div class="card tight"><div class="lbl">приёмка · инструмент</div><span class="mono" style="font-size:22px;color:var(--ink)">check: test -s research/stack.md</span><br>скрипт проверяет сам</div>
+    <div class="card tight"><div class="lbl">приёмка · критик</div><span class="mono" style="font-size:22px;color:var(--ink)">check: manual</span><br>агент оценивает по кадрам</div>
+    <div class="card tight you"><div class="lbl amber">приёмка · вкус</div><span class="mono" style="font-size:22px;color:var(--ink)">check: user</span><br>только после твоего явного «да»</div>
+  </div>
+  <div class="takeaway">Приёмку вкуса агент закрыть не может — это и есть контроль</div>
+</section>
+
+<section class="slide divider nofoot">
+  <img class="full bg" src="assets/illus/il-part3.jpg" alt="">
+  <div class="shade bg"></div>
+  <div class="kicker">часть 3 из 5</div>
+  <h2 class="xl">10 этапов</h2>
+  <p class="lead">что решаешь ты, что делает агент, как вы оба проверяете работу</p>
+</section>
+
+<section class="slide" data-stage="идея">
+  <div class="kicker">этап 1 · идея · интервью</div>
+  <h2>Интервью — <em>фундамент игры</em></h2>
+  <div class="g-5-7 grow">
+    <div class="col" style="gap:20px">
+      <ul class="list small">
+        <li>Из ответов вырастает всё: геймплей, стиль, сюжет, объём</li>
+        <li>Агент разбирает фразу по частям и задаёт вопросы по существу</li>
+        <li>2–3 раунда, у каждого вопроса — рекомендованный вариант</li>
+        <li>Факты не спрашивает — ищет сам</li>
+      </ul>
+      <div class="card tight mt-auto"><div class="lbl amber">скиллы-интервьюеры</div><span class="mono" style="color:var(--ink)">/grill-me</span> — допрашивает, пока в плане не останется дыр<br><span class="mono" style="color:var(--ink)">/studioigor</span> — этап 1: интервью с вариантами ответов</div>
+    </div>
+    <div class="file">
+      <div class="fn">AskUserQuestion · интервью и финальная карточка</div>
+      <div class="fb"><dl class="chat" style="font-size:22px;row-gap:10px">
+        <dt>Вы</dt><dd>Хочу ферму: Stardew Valley × Stranger Things.</dd>
+        <dt class="ai">Студия</dt><dd>Раунд 1 из 2: угроза, ночь, масштаб — у каждого вопроса <span class="k">★</span> рекомендованный ответ</dd>
+        <dt class="ai">Студия</dt><dd><span class="h">CREEPY FARM · ОДНА НОЧЬ</span> — дожить до рассвета и сберечь урожай, пока из разлома ползёт порча<br><img src="assets/creepyfarm/cf-ref.jpg" alt="" style="display:block;width:100%;height:120px;object-fit:cover;object-position:50% 45%;border-radius:10px;margin:10px 0 8px"><span class="c">Допущено: один экран · ночь ~5 минут · браузер</span><br><span class="opt on">Утверждаю</span><span class="opt">Смелее</span><span class="opt">Поменять одно</span></dd>
+      </dl></div>
+    </div>
+  </div>
+  <div class="gate">
+    <div class="you"><b>ты</b>отвечаешь на 2–3 раунда вопросов и утверждаешь концепцию</div>
+    <div class="ai"><b>агент</b>разбирает фразу, ищет факты сам, пишет CONCEPT.md</div>
+    <div class="tool"><b>инструмент</b>интервью с вариантами + журнал решений <code>DECISIONS.md</code></div>
+  </div>
+</section>
+
+<section class="slide" data-stage="идея">
+  <div class="kicker">этап 1 · идея · принципы</div>
+  <h2>Пожелание — <em>это ещё не принцип</em></h2>
+  <table class="t roomy mt">
+    <tr><th style="width:23%">пожелание</th><th style="width:37%">принцип</th><th>проверка игрой: нарушен, если…</th></tr>
+    <tr><td>«эпичные бои»</td><td class="y">здоровье даёт только атака</td><td>удалось отсидеться в укрытии</td></tr>
+    <tr><td>«жуткая атмосфера»</td><td class="y">свет кончается, в темноте не видно врагов</td><td>прошёл уровень, не думая о свете</td></tr>
+    <tr><td>«интересно исследовать»</td><td class="y">в каждой комнате есть что-то новое</td><td>две одинаковые комнаты подряд</td></tr>
+    <tr><td>«риск и награда»</td><td class="y">лучшее лежит в опасных местах</td><td>в обход опасностей собрал столько же</td></tr>
+  </table>
+  <div class="takeaway mt-auto">Принцип что-то запрещает и проверяется игрой. Пожелание — нет</div>
+</section>
+
+<section class="slide" data-stage="идея">
+  <div class="kicker">этап 1 · пример: бриф арго</div>
+  <h2>Каждая строка брифа — решение, <em>которое не надо додумывать</em></h2>
+  <div class="g-7-5 grow">
+    <div class="file">
+      <div class="fn">refs/scenes/ref.md · режиссёрский разбор «под Прометея»</div>
+      <div class="fb"><span class="h">## Scene 02 — Посадка · 0:20–0:45</span>
+<span class="k">Что видим:</span> низкий ракурс почти от земли. Корабль
+  на четырёх опорах садится на пыльную равнину
+<span class="k">Камера:</span> фиксированная точка у земли, лёгкая вибрация.
+  Дым и пыль проходят прямо перед объективом
+<span class="k">Свет:</span> плоско-пасмурный, верхний; снизу —
+  оранжевая вспышка посадочных двигателей
+<span class="k">Звук:</span> нарастающий рёв, сброс давления, шипение
+  гидравлики. После — оглушительная тишина
+<span class="k">Приём:</span> <span class="s">тишина после рёва — самый дешёвый звуковой контраст</span></div>
+    </div>
+    <div class="col">
+      <div class="g2" style="gap:18px">
+        <div class="card tight"><div class="num">10</div>сцен, ~3:45</div>
+        <div class="card tight"><div class="num">52</div>реплики, 4 голоса</div>
+      </div>
+      <div class="q" style="font-size:24px">существо не должно быть видно целиком ни в одном кадре катсцены<small>правило из брифа</small></div>
+      <div class="card ai tight"><div class="lbl sage">результат</div>интро 236 секунд, 32 плана — агент работал точно по заданию</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-stage="идея">
+  <div class="kicker">этап 1 · концепт</div>
+  <h2>Концепт — набор правил и решений, <em>а не эссе</em></h2>
+  <div class="g-5-7 grow">
+    <div class="col">
+      <div class="card you"><div class="lbl amber">правило</div><h4>Одна строка — одно решение с числом</h4>CONCEPT, DESIGN, STORY — короткие файлы. Решение поменялось — правим строку и пишем причину в Changelog</div>
+      <div class="card tight flat"><div class="lbl">то же у исследователей</div>длинные файлы контекста снижают успех агента — ETH Zurich, 2026. А GDC ещё в 2010-м: «одностраничные дизайны» вместо библий, которые никто не читает — Stone Librande</div>
+    </div>
+    <div class="col">
+      <div class="card bad tight"><div class="lbl red">эссе</div>Фонарик — ключевой элемент выживания, позволяющий игроку почувствовать себя защищённым посреди жуткой ночи и…</div>
+      <div class="file">
+        <div class="fn">DESIGN.md · правила и решения</div>
+        <div class="fb"><span class="k">| M01 | Фонарик | mvp | Свет — граница |</span>
+  луч держишь 1,5 с → тайл порчи очищен
+  батарейка 30 с · заряд на крыльце
+<span class="s">порча:</span> тайл каждые 4,0 с → 2,7 с к рассвету
+<span class="s">фонари:</span> 4 шт · свет 2,5 клетки, порча не входит
+<span class="s">рассудок:</span> −5/с на порче · −1,3/с в темноте
+  крыльцо +3/с · газировка +25</div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway">Абзац вместо строки — значит, решение ещё не принято</div>
+</section>
+
+<section class="slide" data-stage="стиль">
+  <div class="kicker">этап 2 · стиль · шаг 1</div>
+  <h2>Стиль начинается <em>с направления</em></h2>
+  <div class="steps"><span class="on"><b>1</b>направление: фраза + правило</span><span><b>2</b>референсы на доске</span><span><b>3</b>проверка: как агент понял стиль</span></div>
+  <div class="dirs mt">
+    <figure class="y"><img src="assets/creepyfarm/cf-ref.jpg" alt=""><div class="lbl amber">близкое · выбрано</div><h4>Уютный пиксель-арт осенью</h4><p>Правило: каждый пиксель — один плоский цвет, контур #2d1315</p></figure>
+    <figure><img src="assets/creepyfarm/cf-bold-1.jpg" alt=""><div class="lbl">смелое</div><h4>Видно только то, что в свете</h4><p>Вне света — чёрное, свет становится геймплеем</p></figure>
+    <figure><img src="assets/creepyfarm/cf-stolen-1.jpg" alt=""><div class="lbl">заимствованное</div><h4>Стоп-моушен, как «Бесподобный мистер Фокс»</h4><p>Войлок, глина, ручной макет, туман из ваты</p></figure>
+  </div>
+  <div class="gate">
+    <div class="you"><b>ты</b>выбираешь направление, а не прилагательные</div>
+    <div class="ai"><b>агент</b>3–5 направлений</div>
+    <div class="tool"><b>инструмент</b>карточка направления: по одной фразе художник нарисует кадр</div>
+  </div>
+</section>
+
+<section class="slide" data-stage="стиль">
+  <div class="kicker">этап 2 · стиль · шаг 2 · инструмент</div>
+  <h2>Выбираете стиль — <em>по картинкам</em></h2>
+  <div class="g-5-7 grow">
+    <div class="col">
+      <div class="steps" style="grid-template-columns:1fr"><span><b>1</b>направление</span><span class="on"><b>2</b>референсы на доске</span><span><b>3</b>проверка</span></div>
+      <ul class="list small mt-s">
+        <li>Агент качает реальные референсы: Steam, Wikimedia, Openverse, кадры YouTube</li>
+        <li>Локальная доска в браузере: лайки, «не то», комментарии, кнопка «Отправить»</li>
+        <li>Раунды: направления → вариации → кадры игры → «Принимаю»</li>
+        <li>Генерация — дополнение, а не замена: такие картинки помечены generated</li>
+      </ul>
+    </div>
+    <figure class="gif fill" data-gif="media/16-board.mp4" data-poster="media/16-board.jpg"></figure>
+  </div>
+  <div class="gate">
+    <div class="you"><b>ты</b>отмечаешь, что нравится, и жмёшь «Отправить»</div>
+    <div class="ai"><b>агент</b>читает отзыв как данные и сужает выбор</div>
+    <div class="tool"><b>инструмент</b><code>board.py serve --until-feedback</code></div>
+  </div>
+</section>
+
+<section class="slide" data-stage="стиль">
+  <div class="kicker">этап 2 · стиль · шаг 3 · документ</div>
+  <h2>Арт-библия — <em>и проверка, как агент её понял</em></h2>
+  <div class="g-5-7 grow">
+    <div class="file">
+      <div class="fn">art/style_bible.txt · Creepy Farm</div>
+      <div class="fb"><span class="h">## Direction</span>  уютно-жуткий пиксель-арт, сверху 3/4
+<span class="h">## Palette</span>  <span class="c">снята с рефа</span>
+  <span style="color:#f59a2f">■</span> #F59A2F оранжевый · 57% кадра
+  <span style="color:#7b5256">■</span> #7B5256 ржаво-красный · 15%
+  <span style="color:#d05eea">■</span> #D05EEA пурпур порчи · 12%
+<span class="h">## Signature</span>
+<span class="k">-</span> пиксель — один цвет, контур #2D1315
+<span class="k">-</span> свет ровный дневной: ночь даёт движок
+<span class="h">## Forbidden</span>
+<span class="c">  сглаживание · градиенты · шум · свечение</span></div>
+    </div>
+    <div class="col" style="gap:14px">
+      <figure class="wipe fill"><img class="before" src="assets/creepyfarm/cf-ref.jpg" alt=""><img class="after" src="assets/creepyfarm/cf-after.jpg" alt=""><div class="bar"></div><span class="badge top">референс</span><span class="badge top r y">кадр из игры</span></figure>
+      <div class="card ai tight" style="display:grid;grid-template-columns:200px 1fr;gap:18px;align-items:center"><img src="assets/creepyfarm/cf-artsheet.jpg" alt="" style="width:200px;height:112px;object-fit:cover;object-position:50% 20%;border-radius:10px"><div><div class="lbl sage">проверка</div>агент рисует лист ассетов по якорю; кадр игры скрипты сверяют с рефом числами, критик — глазами</div></div>
+    </div>
+  </div>
+  <div class="gate">
+    <div class="you"><b>ты</b>говоришь «Принимаю»</div>
+    <div class="ai"><b>агент</b>палитра, свет, форма, ≥3 приёма, запреты + пробные кадры</div>
+    <div class="tool"><b>инструмент</b><code>study.py</code> разбирает реф: палитра, тона, свет · <code>compare.py</code> сверяет кадр с рефом</div>
+  </div>
+</section>
+
+<section class="slide" data-stage="движок,окружение">
+  <div class="kicker">этапы 3–4 · движок и окружение · первый инструмент</div>
+  <h2>Окружение, где агент <em>«видит»</em></h2>
+  <div class="g-5-7 grow">
+    <div class="col" style="gap:16px">
+      <div class="card tight"><div class="lbl">движок — под эту игру</div><div class="engines"><figure><img src="assets/games/argo-2.jpg" alt=""><figcaption>Unity<small>Арго</small></figcaption></figure><figure><img src="assets/games/jev-rts-1.jpg" alt=""><figcaption>Unity<small>JEV</small></figcaption></figure><figure><img src="media/game-wildwaste.jpg" alt=""><figcaption>Godot<small>Wild Waste</small></figcaption></figure><figure><img src="media/game-marchlands.jpg" alt=""><figcaption>PixiJS<small>Marchlands</small></figcaption></figure><figure><img src="media/game-creepyfarm.jpg" alt=""><figcaption>WebGL<small>Creepy Farm</small></figcaption></figure></div>2–4 варианта с честным «почему»: 2D или 3D, платформы, как хорошо агент им управляет</div>
+      <div class="card tight"><div class="lbl">полный комплект, а не минимум</div>CLI · MCP редактора · Blender · захват кадров · автопроверки</div>
+      <div class="card tight you"><div class="lbl amber">моё мнение</div>Лучше родные инструменты вендоров: Claude Code, Codex</div>
+    </div>
+    <div class="col" style="gap:12px">
+      <figure class="stage fill"><canvas data-anim="colliders"></canvas><span class="badge top r y">цель: полный набор автопроверок</span></figure>
+      <div class="cap">Пример: скрипт сам находит пересечения коллайдеров во всех сценах — вместо ручного осмотра</div>
+    </div>
+  </div>
+  <div class="gate">
+    <div class="you"><b>ты</b>выбираешь движок и видишь окно игры своими глазами</div>
+    <div class="ai"><b>агент</b>ставит всё сам и пишет себе автопроверки</div>
+    <div class="tool"><b>инструмент</b><code>ENV.md</code>: RUN · TEST · BUILD · CAPTURE · CHECK</div>
+  </div>
+</section>
+
+<section class="slide" data-stage="all">
+  <div class="kicker sage">сквозной инструмент · проверки и захват кадров</div>
+  <h2>Проверка в три уровня: <em>скрипты → критики → ты</em></h2>
+  <div class="g-6-6 grow">
+    <figure class="stage fill"><canvas data-anim="funnel"></canvas></figure>
+    <div class="col" style="gap:16px">
+      <div class="card ai tight"><div class="lbl sage">1 · автоматические проверки</div>тесты, скрипты, коллайдеры: ловят всё, что можно посчитать</div>
+      <div class="card ai tight"><div class="lbl sage">2 · критики смотрят кадры</div>агенту нужно дать смотреть игру: одна команда → плёнка кадров + metrics.json. Свежий агент оценивает кадры, а не код
+        <img src="assets/argo/intro-sheet-i10.jpg" alt="" style="display:block;width:100%;height:120px;object-fit:cover;object-position:50% 30%;border-radius:10px;margin-top:12px"></div>
+      <div class="card you tight"><div class="lbl amber">3 · ты</div>играешь и решаешь, нравится или нет</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-stage="ассеты">
+  <div class="kicker">этап 5 · ассеты · блокинг</div>
+  <h2>Сначала манекены — <em>потом актёры</em></h2>
+  <div class="g-5-7 grow">
+    <div class="col">
+      <div class="prompt" style="font-size:22px">…делаем сейчас интро и выход в игру НО на 3д примитивах, хочу посмотреть режиссуру кат сцен</div>
+      <ul class="list">
+        <li>Камеры, тайминг, реплики, звук — отлажены на кубиках</li>
+        <li>Манекены заменили моделями, не трогая монтаж</li>
+        <li>10 версий интро за день: i1 в 08:10, i10 в 16:14</li>
+      </ul>
+    </div>
+    <figure class="gif fill" data-gif="media/02-primitives.mp4" data-poster="assets/argo/mannequins-to-real.jpg"></figure>
+  </div>
+  <div class="gate">
+    <div class="you"><b>ты</b>смотришь режиссуру на кубиках</div>
+    <div class="ai"><b>агент</b>строит сцену, подменяет «актёров» по готовности</div>
+    <div class="tool"><b>инструмент</b>пересборка одной командой + флаг <code>UseRealCrew</code></div>
+  </div>
+</section>
+
+<section class="slide" data-stage="ассеты">
+  <div class="kicker">этап 5 · ассеты · 3d</div>
+  <h2>Сложное — в Tripo, <em>простое агент делает сам в Blender</em></h2>
+  <div class="g-6-6 grow">
+    <div class="col" style="gap:14px">
+      <div class="g2 fill" style="gap:14px;grid-template-rows:minmax(0,1fr)">
+        <figure class="shot"><img src="assets/games/argo-tripo-ui.jpg" alt="" style="object-position:50% 40%"><span class="badge">Арго · персонаж в Tripo</span></figure>
+        <figure class="gif" data-gif="media/22-jeep-assembly.mp4" data-poster="media/22-jeep-assembly.jpg"><span class="badge">Dinoland · джип кодом в Blender</span></figure>
+      </div>
+      <div class="g2" style="gap:14px">
+        <div class="card tight"><div class="lbl amber">сложное → Tripo · Meshy</div>персонажи и сложные формы: реф из Codex image gen → multiview → модель</div>
+        <div class="card ai tight"><div class="lbl sage">простое → агент в Blender</div>пропсы, техника, окружение: агент моделирует кодом</div>
+      </div>
+    </div>
+    <div class="col" style="gap:16px">
+      <div class="card you tight"><div class="lbl amber">blender — сборочный цех</div>Откуда бы ни пришла модель — из Tripo или из кода, — риг, лицо, анимации и экспорт идут через Blender одной цепочкой</div>
+      <div class="card ai tight"><div class="lbl sage">каждый шаг — скрипт, а не клик</div>
+        <div class="chain mt-s"><span>analyze_char.py</span><i>→</i><span>build_char.py</span><i>→</i><span>rig_char.py</span><i>→</i><span>face/ · 38 скриптов</span><i>→</i><span>bake_char_anims.py</span><i>→</i><span class="a">check_rig.py</span><i>→</i><span>export_char.py</span><i>→</i><span class="y">Unity: BuildAll()</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway">Все изменения в редакторе — только скриптами</div>
+</section>
+
+<section class="slide" data-stage="ассеты">
+  <div class="kicker">этап 5 · ассеты · лук-дев</div>
+  <h2>Эталонная сцена: <em>так будет выглядеть игра</em></h2>
+  <div class="g-7-5 grow">
+    <figure class="wipe fill"><img class="before" src="assets/games/argo-location-r1.jpg" alt=""><img class="after" src="assets/games/argo-location-r8.jpg" alt=""><div class="bar"></div><span class="badge top">раунд 1 · собрал агент</span><span class="badge top r y">раунд 8 + грейд · принято</span></figure>
+    <div class="col" style="gap:14px">
+      <p class="small ink2">Лук-дев — одна сцена в финальном качестве до массового производства: свет, пост, герои, интерфейс</p>
+      <div class="card ai tight"><div class="lbl sage">1 · агент собрал</div>скрипты прошли: сцена собирается, рендер есть, ошибок нет</div>
+      <div class="card bad tight"><div class="lbl red">2 · критики: «не то»</div>по кадрам видно, что до референса далеко — 8 раундов правок света и поста</div>
+      <div class="card you tight"><div class="lbl amber">3 · ты принимаешь результат</div>все решения записываются в файл и учитываются в будущих проверках</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-stage="ассеты">
+  <div class="kicker">этап 5 · ассеты · анимация</div>
+  <h2>Лаборатория — <em>вместо «сделай анимацию»</em></h2>
+  <div class="g3 grow" style="grid-template-columns:1fr 1.15fr 1fr">
+    <div class="col">
+      <div class="prompt" style="font-size:21px">прежде чем делать все, дай мне отсмотреть пару реплик</div>
+      <ul class="list">
+        <li>Нейтральная студия</li>
+        <li>Переключение клипов</li>
+        <li>Замеры всех состояний</li>
+      </ul>
+    </div>
+    <figure class="gif" data-gif="media/03-animlab.mp4" data-poster="assets/games/argo-animlab-1.jpg"></figure>
+    <figure class="stage"><canvas data-anim="walk"></canvas></figure>
+  </div>
+  <div class="gate">
+    <div class="you"><b>ты</b>отсматриваешь результат до массового производства</div>
+    <div class="ai"><b>агент</b>меряет шаг, скорость ног, зазоры касаний</div>
+    <div class="tool"><b>инструмент</b>лаборатория + замеры + разметка линией на кадре</div>
+  </div>
+</section>
+
+<section class="slide" data-stage="ассеты">
+  <div class="kicker">этап 5 · ассеты · звук</div>
+  <h2>Звук агент не слышит — <em>значит, меряем</em></h2>
+  <div class="g-5-7 grow">
+    <div class="col" style="gap:14px">
+      <div class="g2" style="gap:14px">
+        <div class="card tight"><div class="lbl">озвучка</div>ElevenLabs v3, Gemini TTS</div>
+        <div class="card tight"><div class="lbl">sfx и музыка</div>ElevenLabs, Suno, CC0 или код</div>
+        <div class="card ai tight"><div class="lbl sage">разборчивость</div>речь к фону — в каждой реплике</div>
+        <div class="card ai tight"><div class="lbl sage">журнал звуков</div>какие действия «немые»</div>
+      </div>
+      <div class="card ai tight"><div class="lbl sage">липсинк: что такое виземы</div>Визема — форма рта для группы звуков, хватает 15. Whisper → фонемы → виземы</div>
+    </div>
+    <figure class="stage fill"><canvas data-anim="visemes"></canvas></figure>
+  </div>
+  <div class="takeaway ghost">Что агент не может услышать, он должен измерить</div>
+</section>
+
+<section class="slide" data-stage="механики">
+  <div class="kicker">этап 6 · механики · спека</div>
+  <h2>«Сочно» и «плавно» — <em>это не спека</em></h2>
+  <div class="g-6-6 grow">
+    <div class="col">
+      <p class="small ink2">Слово агент поймёт как угодно. Число однозначно: его можно задать, замерить и проверить</p>
+      <table class="t">
+        <tr><th>вместо слова</th><th>пишем число</th></tr>
+        <tr><td>«отзывчиво»</td><td class="y">≤100 мс до реакции, лучше 2–4 кадра</td></tr>
+        <tr><td>«сочный удар»</td><td class="y">хит-стоп 30–100 мс</td></tr>
+        <tr><td>«тряска»</td><td class="y">80–200 мс с затуханием</td></tr>
+        <tr><td>«с весом»</td><td class="y">разгон 0,1–0,3 с герой · 3–6 с машина</td></tr>
+        <tr><td>«приятный прыжок»</td><td class="y">0,3–0,45 с до верхней точки · койот ~0,1 с</td></tr>
+      </table>
+    </div>
+    <div class="file">
+      <div class="fn">DESIGN.md · M01 Фонарик · Creepy Farm</div>
+      <div class="fb"><span class="k">гипотеза:</span> держу луч — порча отступает →
+  игрок чувствует «я могу продержаться эту ночь»
+  <span class="c">видно: бегает между полем и крыльцом</span>
+<span class="k">параметры:</span> sim.js · K (BATT, CLEAN_T, BEAM_R)
+<span class="k">feel:</span> очистка 1,5 с · батарейка 30 с
+  луч 340 px, конус ±0,36 рад · с лучом ход ×0,8
+  антиреференс: «фонарик-пылесос»
+<span class="k">приёмка:</span> есть выбор «бегу чистить» или
+  «стою стреляю» · на «весело?» —
+  <span class="s">«Да, ещё»</span></div>
+    </div>
+  </div>
+  <div class="takeaway">Каждая строка спеки проверяется глазом или числом — иначе это пожелание</div>
+</section>
+
+<section class="slide" data-stage="механики">
+  <div class="kicker">этап 6 · механики · инструмент</div>
+  <h2>Каждой механике — <em>своя тестовая сцена</em></h2>
+  <div class="g-5-7 grow">
+    <div class="col" style="gap:16px">
+      <ul class="list tight small">
+        <li>Отдельная сцена для одной механики, запуск напрямую, без меню</li>
+        <li>Расстояния подписаны прямо в сцене</li>
+        <li>Панель тюнинга: крутишь числа спеки на лету, A/B одной клавишей</li>
+      </ul>
+      <figure class="gif fill" data-gif="media/04-gunfeel.mp4"></figure>
+      <div class="cap" style="margin-top:0">Арго: тестовая сцена стрельбы — отдача, вспышки, перезарядка</div>
+    </div>
+    <figure class="stage fill"><canvas data-anim="farm"></canvas></figure>
+  </div>
+  <div class="gate">
+    <div class="you"><b>ты</b>играешь, крутишь ползунки, отвечаешь «весело?»</div>
+    <div class="ai"><b>агент</b>спека → тестовая сцена → самопроверка кадрами → тюнинг</div>
+    <div class="tool"><b>инструмент</b>тестовая сцена + панель тюнинга → дамп JSON → коммит</div>
+  </div>
+</section>
+
+<section class="slide" data-stage="all">
+  <div class="kicker sage">сквозной инструмент · оверлей</div>
+  <h2>Одна панель — <em>для меня и для агента</em></h2>
+  <div class="g-7-5 grow">
+    <div class="col">
+      <figure class="gif fill" data-gif="media/27-techoverlay.mp4" data-poster="assets/argo/tech-overlay.jpg"></figure>
+      <div class="cap">TechOverlay (F3): FPS, 1% low, время кадра, draw calls, треугольники, память</div>
+    </div>
+    <div class="col" style="gap:14px">
+      <div class="card ai tight"><div class="lbl sage">почему ещё и текстом</div>Только по скриншотам лучшие модели прошли 0,48% игр VideoGameBench. Поэтому агенту даём и картинку, и состояние игры текстом<div class="src">Princeton · 2025</div></div>
+      <pre class="dump fill" data-anim="dump"></pre>
+      <div class="cap" style="margin-top:0">тот же оверлей, который агент читает текстом</div>
+    </div>
+  </div>
+  <div class="takeaway ghost">Лучший момент проекта — когда агент сам решил, что ему не хватает глаз, и сделал их</div>
+</section>
+
+<section class="slide" data-stage="all">
+  <div class="kicker sage">сквозной инструмент · критик</div>
+  <h2>Критик не читает код — <em>он смотрит кадры</em></h2>
+  <div class="g2" style="gap:24px">
+    <div class="card ai tight"><div class="lbl sage">«свежие глаза»</div>новый агент без контекста и без доступа к коду. В Арго ~20 критиков, 25 раундов по экстерьеру</div>
+    <div class="card you tight"><div class="lbl amber">gauntlet — только для главного</div>планка, которую можно открыть · слепое A/B: вердикт до раскрытия · один главный разрыв за раунд</div>
+  </div>
+  <div class="frames mt grow">
+    <figure><img src="assets/games/argo-exterior-r1.jpg" alt=""><span class="badge">раунд 1</span></figure>
+    <figure><img src="assets/games/argo-exterior-r25.jpg" alt=""><span class="badge">раунд 13</span></figure>
+    <figure class="y"><img src="assets/games/argo-exterior-r13.jpg" alt=""><span class="badge y">раунд 25</span></figure>
+  </div>
+  <div class="takeaway ghost">«Агенты стабильно завышают оценку своей работы. Отделить того, кто делает, от того, кто судит, — сильный рычаг» — Anthropic, 2026</div>
+</section>
+
+<section class="slide" data-stage="срез,контент,полировка,релиз">
+  <div class="kicker">этапы 7–10 · срез → релиз</div>
+  <h2>Сначала целиком — <em>потом красиво</em></h2>
+  <div class="g4">
+    <div class="card tight"><div class="lbl amber">07 срез</div>меню → игра → результат → рестарт. Некрасиво, но целиком</div>
+    <div class="card tight"><div class="lbl amber">08 контент</div>уровни как данные; каждый новый уровень приносит новое: врага, механику или место</div>
+    <div class="card tight"><div class="lbl amber">09 полировка</div>пока ты не скажешь «достаточно»</div>
+    <div class="card tight"><div class="lbl amber">10 релиз</div>требования площадки — свежим ресерчем; аудитор перед модерацией</div>
+  </div>
+  <div class="lbl mt">чек-лист «это игра, а не техдемо»</div>
+  <div class="chips"><span class="chip y">меню</span><span class="chip y">HUD</span><span class="chip y">цель</span><span class="chip y">прогрессия</span><span class="chip y">сюжет</span><span class="chip y">звук на всём</span><span class="chip y">победа · поражение · рестарт</span><span class="chip y">пауза</span><span class="chip y">сохранения</span><span class="chip y">обучение игрой</span><span class="chip y">финал и титры</span></div>
+  <div class="mt-auto" style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px">
+    <div class="huge">Доделывайте<br>игры</div>
+    <p class="lead" style="font-size:32px;max-width:520px;margin-bottom:12px">Урезай объём, а не качество</p>
+  </div>
+</section>
+
+<section class="slide divider nofoot">
+  <img class="full bg" src="assets/illus/il-part4.jpg" alt="">
+  <div class="shade bg"></div>
+  <div class="kicker">часть 4 из 5</div>
+  <h2 class="xl">Ловушка</h2>
+  <p class="lead">когда инструменты съедают игру</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">а теперь честно</div>
+  <h2>Студия, которая <em>забыла про игру</em></h2>
+  <div class="g-5-7 grow">
+    <div class="col">
+      <p class="lead" style="font-size:30px">Orca: 7 ролей, worktrees, критерии, стражи, Producer раздаёт задачи. 12 дней, пиксельная HOMM в браузере.</p>
+      <div class="g2" style="gap:18px">
+        <div class="card tight"><div class="num">70%</div>недельного лимита Max 20x</div>
+        <div class="card bad tight"><div class="num" style="color:var(--red)">22%</div>кода — сама игра</div>
+        <div class="card tight"><div class="num">×1,5</div>тестов больше, чем игры</div>
+        <div class="card tight"><div class="num">×2,5</div>документации больше</div>
+      </div>
+    </div>
+    <figure class="gif fill" data-gif="media/05-orca.mp4" data-poster="media/05-orca.jpg"></figure>
+  </div>
+</section>
+
+<section class="slide center">
+  <div class="kicker">правило</div>
+  <h2 class="xl" style="font-size:84px">Изменение оправдано, если меняет <em>то, что видит игрок</em></h2>
+  <div class="g3 mt">
+    <div class="card tight"><div class="lbl">рельсы</div>проверки — не дольше 3 минут</div>
+    <div class="card tight"><div class="lbl">тревога</div>тестов больше 35% → статус пишет TOO MANY TESTS</div>
+    <div class="card tight"><div class="lbl">ритм</div>одна механика — одна тестовая сцена — один плейтест</div>
+  </div>
+</section>
+
+<section class="slide divider nofoot">
+  <img class="full bg" src="assets/illus/il-part5.jpg" alt="">
+  <div class="shade bg"></div>
+  <div class="kicker">часть 5 из 5</div>
+  <h2 class="xl">Нюансы и скиллы</h2>
+  <p class="lead">модели, effort, промпты, скиллы</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">нюансы · какая нейросеть для чего</div>
+  <h2>Модель — <em>под роль в пайплайне</em></h2>
+  <table class="t roomy">
+    <tr><th style="width:24%">задача</th><th style="width:30%">чем</th><th>почему</th></tr>
+    <tr><td>код и архитектура</td><td class="y">Claude Opus 5.5 · Claude Code</td><td>держит большой проект, пишет скрипты для Blender и Unity</td></tr>
+    <tr><td>картинки и UI</td><td class="y">Codex (GPT) · imagegen</td><td>рефы, концепты, иконки, промо</td></tr>
+    <tr><td>3D-модели</td><td class="y">Tripo · Meshy</td><td>сложные объекты нейронка в Blender сама не соберёт</td></tr>
+    <tr><td>звук и голос</td><td class="y">ElevenLabs · Gemini TTS</td><td>SFX, музыка, озвучка с эмоциями</td></tr>
+    <tr><td>плейтест и рутина</td><td class="y">дешёвые модели: Haiku, Luna</td><td>5 плейтестеров параллельно почти бесплатно</td></tr>
+    <tr><td>локальные</td><td class="y">Qwen и др.</td><td>только для специфических задач</td></tr>
+  </table>
+</section>
+
+<section class="slide">
+  <div class="kicker">нюансы · уровень вдумчивости</div>
+  <h2>Effort — <em>по цене ошибки</em></h2>
+  <div class="g3">
+    <div class="card you"><div class="lbl amber">xhigh / max</div><h4>Где ошибка стоит дней</h4>план и архитектура, концепт, написание скилла, сложный баг, долгий автономный прогон</div>
+    <div class="card"><div class="lbl">high</div><h4>По умолчанию</h4>обычная разработка внутри этапа</div>
+    <div class="card ai"><div class="lbl sage">low / medium</div><h4>Где проверяешь сам</h4>быстрые фиксы «я сам проверю», монтаж, рутина</div>
+  </div>
+  <div class="card tight mt-l" style="font-size:28px"><div class="lbl amber">это же касается сабагентов</div>Effort задаётся каждому сабагенту отдельно: сложная задача — xhigh, рутина — low</div>
+  <div class="takeaway ghost">Хорошая спека позволяет снизить effort. Документация Anthropic: xhigh — для долгих агентных задач от 30 минут, low — для простых и для сабагентов</div>
+</section>
+
+<section class="slide">
+  <div class="kicker">нюансы · реальные промпты</div>
+  <h2>Промпты, которые <em>управляют пайплайном</em></h2>
+  <div class="g2 prompts" style="gap:28px 36px">
+    <div><div class="lbl amber">приёмка</div><div class="prompt">прежде чем делать все, дай мне отсмотреть пару реплик</div></div>
+    <div><div class="lbl amber">глаза</div><div class="prompt">сделай простой html, где я увижу все юниты со всеми анимациями</div></div>
+    <div><div class="lbl amber">память</div><div class="prompt">исправь скилл, чтобы ошибка больше не повторялась</div></div>
+    <div><div class="lbl amber">критерий готовности</div><div class="prompt">/goal все задачи из папки @task выполнены</div></div>
+    <div><div class="lbl amber">автономно на ночь</div><div class="prompt">/loop 25m /gamemaker continue &lt;slug&gt;</div></div>
+    <div><div class="lbl amber">классика</div><div class="prompt">делай хорошо, плохо не делай</div></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="kicker">скиллы</div>
+  <h2>Скилл — это <em>упакованный пайплайн</em></h2>
+  <div class="flow">
+    <div class="st"><div class="n">01</div><h4>Сделал задачу</h4>в обычной сессии, без скилла</div><div class="ar">→</div>
+    <div class="st"><div class="n">02</div><h4>Упаковал</h4>«сделай из этого скилл»</div><div class="ar">→</div>
+    <div class="st you"><div class="n">03</div><h4>Ошибка</h4>«исправь скилл, чтобы ошибка больше не повторялась»</div><div class="ar">→</div>
+    <div class="st ai"><div class="n">04</div><h4>Умнеет</h4>каждый проект делает его лучше</div>
+  </div>
+  <div class="g3 mt-l">
+    <div class="card tight you"><div class="lbl amber">studioigor</div>пайплайн этого доклада: 10 этапов, критерии, доска, автопилот</div>
+    <div class="card tight you"><div class="lbl amber">ref2game</div>играбельная 2D-сцена по референсу: арт генерирует нейронка, движение — код</div>
+    <div class="card tight you"><div class="lbl amber">3d-animator</div>риг, mocap, лица и липсинк — то, что обкатано на Арго</div>
+  </div>
+  <div class="g2 mt">
+    <div class="q" style="font-size:23px">Добавляйте новые правила только после того, как заметили повторяющиеся ошибки<small>OpenAI · Codex best practices</small></div>
+    <div class="q sage" style="font-size:23px">studioigor учится в user-choices/ — только после твоего «да». Сам SKILL.md агент не трогает<small>правило 12 скилла</small></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="kicker">скиллы · анатомия</div>
+  <h2>Что внутри <em>скилла-пайплайна</em></h2>
+  <div class="g-7-5 grow">
+    <div class="file">
+      <div class="fn">studioigor/</div>
+      <div class="fb tree"><span class="d">SKILL.md</span>          <span class="c">когда включаться и процесс по фазам</span>
+<span class="d">references/</span>       <span class="c">детали — читаются по фазе, не все сразу</span>
+<span class="d">scripts/</span>          <span class="c">приёмка и рутина кодом: studio.py, board.py</span>
+<span class="d">templates/</span>        <span class="c">CONCEPT, ART_BIBLE, захват кадров, роли</span>
+<span class="d">user-choices/</span>     <span class="c">чему скилл научился с твоего «да»</span>
+
+<span class="d">game/.studioigor/</span> <span class="c">состояние игры: фаза, решения, критерии</span></div>
+    </div>
+    <div class="col" style="gap:26px">
+      <div class="q">Критерий — команда, а не утверждение</div>
+      <div class="q">Скрипты не ошибаются на 134-м раунде</div>
+      <div class="q">Доверяй тому, что хранится на диске, а не контексту</div>
+      <div class="card ai tight mt-auto"><div class="lbl sage">progressive disclosure</div>агент заранее знает только имя и описание скилла; тело и references грузятся, когда нужны<div class="src">Anthropic · Agent Skills, 2025</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="kicker">круг замкнулся</div>
+  <h2>«Сделай игру сам» — <em>но уже с пайплайном</em></h2>
+  <div class="g-7-5 grow">
+    <div class="file">
+      <div class="fn">автопилот studioigor</div>
+      <div class="fb"><dl class="chat">
+        <dt>Вы</dt><dd>Сделай игру сам, пока я сплю.</dd>
+        <dt class="ai">Студия</dt><dd>Запустить независимую разработку?<br><span class="opt on">Да</span><span class="opt">Цель: играбельный срез</span><span class="opt">~10 ч</span></dd>
+        <dt class="ai">Ночь</dt><dd><span class="c">CronCreate запускает тики. Каждый тик — свежий агент: один шаг и коммит</span></dd>
+        <dt>Утро</dt><dd>REPORT.md: как поиграть одной командой · что сделано · <span class="k">решения, принятые за вас, — на пересмотр</span></dd>
+      </dl></div>
+    </div>
+    <div class="col">
+      <ul class="list">
+        <li>Каждое решение — в REVIEW.md</li>
+        <li>Проверяет себя по кадрам и числам</li>
+        <li>Сам останавливается: цель, время или 3 тика без изменений</li>
+        <li>Не пушит, не публикует, не платит, не логинится</li>
+      </ul>
+      <figure class="shot grow mt"><img src="assets/illus/il-night.jpg" alt="" style="object-position:50% 55%"></figure>
+    </div>
+  </div>
+  <div class="takeaway">Разница с первым подходом — не в промпте, а в пайплайне за ним</div>
+</section>
+
+<section class="slide">
+  <div class="kicker">скиллы · которые я использую</div>
+  <h2>Мой набор</h2>
+  <div class="g3 kit" style="gap:22px 28px;margin-block:auto">
+    <div class="card tight you"><h4>studioigor</h4>игра от идеи до релиза вместе с тобой</div>
+    <div class="card tight you"><h4>ref2game</h4>играбельная 2D-сцена по референсу</div>
+    <div class="card tight you"><h4>3d-animator</h4>риг, mocap, лица, липсинк</div>
+    <div class="card tight"><h4>grill-me</h4>интервью до начала работы, пока не останется дыр</div>
+    <div class="card tight"><h4>codex-imagegen</h4>растровые ассеты через Codex</div>
+    <div class="card tight"><h4>скиллы для публикации</h4>SDK площадки, карточка игры и аудит релиза перед модерацией</div>
+  </div>
+  <div class="takeaway ghost">Выделенные — мои, открыты на GitHub. QR — в конце</div>
+</section>
+
+<section class="slide center">
+  <div class="kicker">последнее</div>
+  <h2 class="xl">Не бойтесь <em>экспериментировать</em></h2>
+  <figure class="shot" style="height:250px;margin-bottom:28px"><img src="assets/illus/il-lab.jpg" alt="" style="object-position:50% 50%"></figure>
+  <div class="g4">
+    <div class="card tight"><div class="lbl amber">выбрасывайте</div>ref2game заменил мой старый скилл для 2D-ассетов за один день</div>
+    <div class="card tight"><div class="lbl amber">пробуйте новое</div>Tripo, Hunyuan и другие — сравнил на одном персонаже за вечер и выбрал по результату</div>
+    <div class="card tight"><div class="lbl amber">изменяйте</div>улучшайте то, что есть, постоянно: каждый проект и каждая ошибка делают скилл лучше</div>
+    <div class="card tight"><div class="lbl amber">делайте инструменты</div>просмотрщик юнитов за 9 минут показал, что половина анимаций — статичные кадры</div>
+  </div>
+  <div class="takeaway mt-l">Начните с одного инструмента для своей игры: просмотрщик, оверлей с состоянием игры или тестовая сцена</div>
+</section>
+
+<section class="slide nofoot">
+  <div class="kicker">забирайте</div>
+  <h2>Скиллы — бесплатно, <em>на GitHub</em></h2>
+  <div class="g4 mt-s">
+    <div class="qr"><div class="code"><img src="assets/qr-studioigor-skill.svg" alt=""></div><b>studioigor</b><span>github.com/studioigor/studioigor-skill</span></div>
+    <div class="qr"><div class="code"><img src="assets/qr-3d-animator.svg" alt=""></div><b>3d-animator</b><span>github.com/studioigor/3d-animator-skill</span></div>
+    <div class="qr"><div class="code"><img src="assets/qr-ref2game.svg" alt=""></div><b>ref2game</b><span>github.com/studioigor/ref2game</span></div>
+    <div class="qr"><div class="code"><img src="assets/qr-youtube.svg" alt=""></div><b>YouTube</b><span>@studioigor</span></div>
+  </div>
+  <div class="prompt lg mt-auto" style="align-self:center">Установи скилл studioigor https://github.com/studioigor/studioigor-skill</div>
+</section>
+
+</div></div>
+<div id="jump"></div>
+<script src="deck.js"></script>
+<script src="anim.js"></script>
+</body>
+</html>

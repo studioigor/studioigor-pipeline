@@ -1,0 +1,38 @@
+# ОС и редакторы
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*~
+
+# Секреты, логи, зависимости
+.env
+.env.*
+*.log
+node_modules/
+__pycache__/
+.claude/
+CLAUDE.md
+
+# Рабочие файлы деки — в репозиторий идёт только веб-версия
+comments.js
+comments/
+tools/
+_*/
+*.bak
+plan.md
+research.md
+slides.md
+thumbnails/
+gifs/
+
+# Сборки и выгрузки
+*.zip
+*.pdf
+*.pptx
+*.key
